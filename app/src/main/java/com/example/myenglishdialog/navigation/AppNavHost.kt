@@ -6,20 +6,30 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.myenglishdialog.ui.MainScreen
 import com.example.myenglishdialog.ui.VideoSelectionScreen
+import com.example.myenglishdialog.ui.DialogScreen
+
 
 @Composable
 fun AppNavHost(navController: NavHostController) {
     NavHost(navController, startDestination = "main") {
         composable("main") {
             MainScreen(
-                onSelectVideoClick = { navController.navigate("video") },
+                onSelectVideoClick = { navController.navigate("videoSelection") },
                 onStartDialogClick = { /* TODO */ }
             )
         }
-        composable("video") {
+        composable("videoSelection") {
             VideoSelectionScreen(
+                onVideoSelected = { selectedVideo ->
+                    navController.navigate("dialogScreen/${selectedVideo.id}")
+                },
                 onBackClick = { navController.popBackStack() }
             )
+        }
+
+        composable("dialogScreen/{videoId}") { backStackEntry ->
+            val videoId = backStackEntry.arguments?.getString("videoId") ?: return@composable
+            DialogScreen(videoId, navController)
         }
     }
 }

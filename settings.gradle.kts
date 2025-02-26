@@ -16,6 +16,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        jcenter() // Добавь, если библиотека требует
+        maven { url = uri("https://jitpack.io") } // Если нужен JitPack
     }
 }
 
