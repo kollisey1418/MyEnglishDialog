@@ -58,6 +58,9 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.2.2")
     implementation("androidx.compose.material3:material3") // Использует BOM для версии
     implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0")
+    implementation("com.google.code.gson:gson:2.8.9")
+
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
